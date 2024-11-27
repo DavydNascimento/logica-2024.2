@@ -1,7 +1,23 @@
 <script>
 
 //Você deve implementar um sistema de gerenciamento de contas bancárias. O sistema deve permitir a criação de contas, depósitos, retiradas e a consulta do saldo. Além disso, o sistema deve gerenciar contas de diferentes tipos, como contas correntes e contas poupança.
+//Sistema Conta:
+    	//A Conta deve ter os seguintes atributos:
+        	//titular (String): nome do titular da conta.
+        	//saldo (Float): o saldo atual da conta (inicialmente 0).
+        	//tipo (String): tipo da conta (por exemplo, "corrente" ou "poupança").
 
+//Métodos(funções):
+        	//depositar(valor: float): Adiciona um valor ao saldo da conta.
+        	//retirar(valor: float): Subtrai um valor do saldo da conta, desde que haja saldo suficiente. Caso contrário, exibe uma mensagem de erro.
+        	//consultar_saldo(): Retorna o saldo atual da conta.
+        	//exibir_dados(): Exibe os dados da conta, incluindo o titular, saldo e tipo.
+
+//Funcionalidades adicionais:
+    	//Permitir que o usuário crie contas e realize operações (depósito, retirada) através de um menu interativo.
+    	//Validar o valor dos depósitos e retiradas, assegurando que não sejam negativos.
+
+    
 // Definição do objeto Conta
 class Conta {
     constructor(titular, tipo) {
