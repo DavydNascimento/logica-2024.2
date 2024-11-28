@@ -18,47 +18,6 @@
     	//Validar o valor dos depósitos e retiradas, assegurando que não sejam negativos.
 
     
-// Definição do objeto Conta
-class Conta {
-    constructor(titular, tipo) {
-        this.titular = titular;
-        this.saldo = 0;
-        this.tipo = tipo;
-    }
-
-    // Método para depositar um valor na conta
-    depositar(valor) {
-        if (valor > 0) {
-            this.saldo += valor;
-            alert(`Depósito de R$${valor} realizado com sucesso! Novo saldo: R$${this.saldo}`);
-        } else {
-            alert("Valor de depósito deve ser positivo.");
-        }
-    }
-
-    // Método para retirar um valor da conta
-    retirar(valor) {
-        if (valor > 0 && valor <= this.saldo) {
-            this.saldo -= valor;
-            alert(`Retirada de R$${valor} realizada com sucesso! Novo saldo: R$${this.saldo}`);
-        } else if (valor > this.saldo) {
-            alert("Erro: Saldo insuficiente.");
-        } else {
-            alert("Valor de retirada deve ser positivo.");
-        }
-    }
-
-    // Método para consultar o saldo da conta
-    consultar_saldo() {
-        return this.saldo;
-    }
-
-    // Método para exibir os dados da conta
-    exibir_dados() {
-        alert(`Titular: ${this.titular}\nTipo de Conta: ${this.tipo}\nSaldo: R$${this.saldo}`);
-    }
-}
-
 // Função para criar uma nova conta
 function criarConta() {
     let nome = prompt("Digite o nome do titular da conta:");
@@ -69,7 +28,44 @@ function criarConta() {
         tipo = prompt("Digite o tipo da conta (corrente ou poupança):").toLowerCase();
     }
 
-    return new Conta(nome, tipo);
+    // Retorna um objeto representando a conta
+    return {
+        titular: nome,
+        saldo: 0,
+        tipo: tipo,
+
+        // Método para depositar um valor na conta
+        depositar: function(valor) {
+            if (valor > 0) {
+                this.saldo += valor;
+                alert(`Depósito de R$${valor} realizado com sucesso! Novo saldo: R$${this.saldo}`);
+            } else {
+                alert("Valor de depósito deve ser positivo.");
+            }
+        },
+
+        // Método para retirar um valor da conta
+        retirar: function(valor) {
+            if (valor > 0 && valor <= this.saldo) {
+                this.saldo -= valor;
+                alert(`Retirada de R$${valor} realizada com sucesso! Novo saldo: R$${this.saldo}`);
+            } else if (valor > this.saldo) {
+                alert("Erro: Saldo insuficiente.");
+            } else {
+                alert("Valor de retirada deve ser positivo.");
+            }
+        },
+
+        // Método para consultar o saldo da conta
+        consultar_saldo: function() {
+            return this.saldo;
+        },
+
+        // Método para exibir os dados da conta
+        exibir_dados: function() {
+            alert(`Titular: ${this.titular}\nTipo de Conta: ${this.tipo}\nSaldo: R$${this.saldo}`);
+        }
+    };
 }
 
 // Função para exibir o menu de opções
