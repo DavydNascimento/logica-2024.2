@@ -1,0 +1,57 @@
+<script>
+
+    //Entrada
+    let titular = "Davyd"
+    let tipo = "Corrente" // "corrente" ou "poupança"
+    let saldo = 1000
+
+    //Processamento
+    function depositar(valor) {
+        return saldo = saldo + valor
+    }
+    function retirada(valor) {
+        if (valor < saldo) {
+            return saldo = saldo - valor
+        }
+        return saldo
+    }
+    function consultar_saldo() {
+        return saldo
+    }
+    function exibir_dados() {
+        return [titular, tipo, saldo]
+    }
+    function menu() {
+        let opcao = -1
+        while (opcao != 0) {
+            opcao = prompt(`
+            Titular: ${titular} | Saldo: ${saldo}
+            [1] - Deposito
+            [2] - Saque
+            [3] - Saldo
+            [4] - Exibir Dados
+            [0] - Sair
+        `)
+            if (opcao == 1) {
+                let valor = parseFloat(prompt("Valor Deposito?"))
+                saldo = depositar(valor)
+                alert(`Saldo: ${saldo}`)
+            }
+            if (opcao == 2) {
+                let valor = parseFloat(prompt("Valor do Saque?"))
+                saldo = retirada(valor)
+                alert(`Saldo: ${saldo}`)
+            } 
+            if (opcao == 3) {
+                alert(`Saldo: ${consultar_saldo()}`)
+            }
+            if (opcao == 4) {
+                let dados = exibir_dados()
+                alert(`Dados: ${dados}`)
+            }
+        }
+    }
+    //Saida
+    menu()
+    
+</script>
